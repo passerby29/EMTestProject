@@ -8,12 +8,12 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("e8868481-743f-4eb2-a0d7-2bc4012275c8/")
+    @GET("63866c74-d593-432c-af8e-f279d1a8d2ff/")
     suspend fun loadBookInfo(): Response<BookDto>
 
-    @GET("35e0d18e-2521-4f1b-a575-f0fe366f66e3/")
+    @GET("d144777c-a67f-4e35-867a-cacc3b827473/")
     suspend fun loadHotelInfo(): Response<HotelDto>
 
-    @GET("f9a38183-6f95-43aa-853a-9c83cbb05ecd/")
+    @GET("8b532701-709e-4194-a41c-1a903af00195/")
     suspend fun loadRoomsInfo(): Response<List<RoomDto>>
 }
