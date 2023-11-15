@@ -10,6 +10,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:scrollbars="none"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +43,7 @@
                         android:layout_marginEnd="16dp"
                         android:fontFamily="@font/sf_medium"
                         android:gravity="center"
-                        android:text="Отель"
+                        android:text="@string/hotel_title"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </com.google.android.material.appbar.MaterialToolbar>
@@ -85,6 +87,7 @@
                     android:background="@drawable/item_rating_background"
                     android:drawableStart="@drawable/ic_star"
                     android:drawablePadding="2dp"
+                    tools:ignore="TextContrastCheck"
                     android:drawableTint="@color/rating_text_color"
                     android:fontFamily="@font/sf_medium"
                     android:paddingHorizontal="10dp"
@@ -114,6 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
+                    tools:ignore="TextContrastCheck"
                     android:textColor="@color/location_text_color"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/hotelNameTextView"
@@ -148,6 +152,7 @@
                         android:fontFamily="@font/sf_regular"
                         android:textColor="@color/price_add_text_color"
                         android:textSize="16sp"
+                        tools:ignore="TextContrastCheck"
                         tools:text="за тур с перелётом" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -164,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:fontFamily="@font/sf_medium"
-                    android:text="Об отеле"
+                    android:text="@string/about_hotel_title"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -185,13 +190,13 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
                         android:background="@drawable/item_peculiarity_background"
                         android:fontFamily="@font/sf_medium"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="5dp"
                         android:textColor="@color/additional_text_color"
                         android:textSize="16sp"
+                        tools:ignore="TextContrastCheck"
                         tools:text="3-я линия" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -204,6 +209,7 @@
                         android:paddingVertical="5dp"
                         android:textColor="@color/additional_text_color"
                         android:textSize="16sp"
+                        tools:ignore="TextContrastCheck"
                         tools:text="Платный Wi-Fi в фойе" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -216,6 +222,7 @@
                         android:paddingVertical="5dp"
                         android:textColor="@color/additional_text_color"
                         android:textSize="16sp"
+                        tools:ignore="TextContrastCheck"
                         tools:text="30 км до аэропорта" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -227,6 +234,7 @@
                         android:paddingVertical="5dp"
                         android:textColor="@color/additional_text_color"
                         android:textSize="16sp"
+                        tools:ignore="TextContrastCheck"
                         tools:text="1 км до пляжа" />
 
                 </com.google.android.flexbox.FlexboxLayout>
@@ -265,7 +273,8 @@
                             android:layout_height="24dp"
                             android:layout_marginEnd="12dp"
                             android:src="@drawable/ic_facilities"
-                            app:tint="@color/black" />
+                            app:tint="@color/black"
+                            android:contentDescription="@null" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -277,7 +286,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/sf_medium"
-                                android:text="Удобства"
+                                android:text="@string/facilities_title"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
 
@@ -285,7 +294,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/sf_medium"
-                                android:text="Самое необходимое"
+                                android:text="@string/about_hotel_placeholder"
                                 android:textColor="@color/additional_text_color"
                                 android:textSize="14sp" />
                         </LinearLayout>
@@ -294,7 +303,8 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_arrow_right"
-                            app:tint="@color/black" />
+                            app:tint="@color/black"
+                            android:contentDescription="@null" />
                     </LinearLayout>
 
                     <com.google.android.material.divider.MaterialDivider
@@ -316,7 +326,8 @@
                             android:layout_height="24dp"
                             android:layout_marginEnd="12dp"
                             android:src="@drawable/ic_include"
-                            app:tint="@color/black" />
+                            app:tint="@color/black"
+                            android:contentDescription="@null" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -328,7 +339,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/sf_medium"
-                                android:text="Что включено"
+                                android:text="@string/included_title"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
 
@@ -336,7 +347,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/sf_medium"
-                                android:text="Самое необходимое"
+                                android:text="@string/about_hotel_placeholder"
                                 android:textColor="@color/additional_text_color"
                                 android:textSize="14sp" />
                         </LinearLayout>
@@ -345,7 +356,8 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_arrow_right"
-                            app:tint="@color/black" />
+                            app:tint="@color/black"
+                            android:contentDescription="@null" />
                     </LinearLayout>
 
                     <com.google.android.material.divider.MaterialDivider
@@ -367,7 +379,8 @@
                             android:layout_height="24dp"
                             android:layout_marginEnd="12dp"
                             android:src="@drawable/ic_exclude"
-                            app:tint="@color/black" />
+                            app:tint="@color/black"
+                            android:contentDescription="@null" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -379,7 +392,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/sf_medium"
-                                android:text="Что не включено"
+                                android:text="@string/exclude_title"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
 
@@ -387,7 +400,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/sf_medium"
-                                android:text="Самое необходимое"
+                                android:text="@string/about_hotel_placeholder"
                                 android:textColor="@color/additional_text_color"
                                 android:textSize="14sp" />
                         </LinearLayout>
@@ -396,7 +409,8 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_arrow_right"
-                            app:tint="@color/black" />
+                            app:tint="@color/black"
+                            android:contentDescription="@null" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -415,7 +429,7 @@
                     android:layout_marginVertical="12dp"
                     android:backgroundTint="#0D72FF"
                     android:fontFamily="@font/sf_medium"
-                    android:text="К выбору номера"
+                    android:text="@string/select_room_button_text"
                     android:textSize="16sp"
                     app:cornerRadius="15dp" />
             </LinearLayout>
