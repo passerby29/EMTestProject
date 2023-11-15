@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "EMTestProject"
 include(":app")
- 
+include(":domain")
