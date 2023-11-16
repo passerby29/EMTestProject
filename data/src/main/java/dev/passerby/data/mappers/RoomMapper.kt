@@ -8,11 +8,11 @@ class RoomMapper {
 
     fun mapRoomDtoToDbModel(dto: RoomDto) = RoomDbModel(
         id = dto.id,
-        imageUrls = dto.image_urls,
+        imageUrls = dto.imageUrls,
         name = dto.name,
         peculiarities = dto.peculiarities,
         price = dto.price,
-        pricePer = dto.price_per,
+        pricePer = dto.pricePer,
     )
 
     fun mapRoomDbModelToEntity(dbModel: RoomDbModel) = RoomModel(

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c9c9c9"
+    android:background="@color/main_background"
     tools:context=".fragments.HotelFragment">
 
     <ScrollView
@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/hotelTopBarLayout"
+                android:id="@+id/roomsTopBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/white"
@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/hotelToolbar"
+                    android:id="@+id/roomsToolbar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal">
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/item_top_layout_background"
-                app:layout_constraintTop_toBottomOf="@+id/hotelTopBarLayout">
+                app:layout_constraintTop_toBottomOf="@+id/roomsTopBarLayout">
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/hotelImageContainer"
@@ -143,7 +143,7 @@
                         android:fontFamily="@font/sf_semi_bold"
                         android:textColor="@color/black"
                         android:textSize="30sp"
-                        tools:text="@string/hotel_price_placeholder" />
+                        tools:text="@string/price_placeholder" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/hotelPriceAddTextView"
@@ -185,59 +185,7 @@
                     app:justifyContent="flex_start"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hotelAboutTitleTextView">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/item_peculiarity_background"
-                        android:fontFamily="@font/sf_medium"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="5dp"
-                        android:textColor="@color/additional_text_color"
-                        android:textSize="16sp"
-                        tools:ignore="TextContrastCheck"
-                        tools:text="3-я линия" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/item_peculiarity_background"
-                        android:fontFamily="@font/sf_medium"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="5dp"
-                        android:textColor="@color/additional_text_color"
-                        android:textSize="16sp"
-                        tools:ignore="TextContrastCheck"
-                        tools:text="Платный Wi-Fi в фойе" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/item_peculiarity_background"
-                        android:fontFamily="@font/sf_medium"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="5dp"
-                        android:textColor="@color/additional_text_color"
-                        android:textSize="16sp"
-                        tools:ignore="TextContrastCheck"
-                        tools:text="30 км до аэропорта" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/item_peculiarity_background"
-                        android:fontFamily="@font/sf_medium"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="5dp"
-                        android:textColor="@color/additional_text_color"
-                        android:textSize="16sp"
-                        tools:ignore="TextContrastCheck"
-                        tools:text="1 км до пляжа" />
-
-                </com.google.android.flexbox.FlexboxLayout>
+                    app:layout_constraintTop_toBottomOf="@id/hotelAboutTitleTextView"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/hotelDescTextView"

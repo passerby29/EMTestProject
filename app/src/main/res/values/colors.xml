@@ -8,4 +8,5 @@
     <color name="price_add_text_color">#828796</color>
     <color name="peculiarity_background">#FBFBFC</color>
     <color name="additional_text_color">#828796</color>
+    <color name="main_background">#F5F5F8</color>
 </resources>
