@@ -8,5 +8,26 @@
         android:id="@+id/hotelFragment"
         android:name="dev.passerby.emtestproject.fragments.HotelFragment"
         android:label="fragment_hotel"
-        tools:layout="@layout/fragment_hotel" />
+        tools:layout="@layout/fragment_hotel" >
+        <action
+            android:id="@+id/action_hotelFragment_to_roomsFragment"
+            app:destination="@id/roomsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomsFragment"
+        android:name="dev.passerby.emtestproject.fragments.RoomsFragment"
+        android:label="fragment_rooms"
+        tools:layout="@layout/fragment_rooms" >
+        <argument
+            android:name="hotelName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_roomsFragment_to_bookFragment"
+            app:destination="@id/bookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="dev.passerby.emtestproject.fragments.BookFragment"
+        android:label="fragment_book"
+        tools:layout="@layout/fragment_book" />
 </navigation>

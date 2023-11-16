@@ -2,7 +2,7 @@ package dev.passerby.data.network
 
 import dev.passerby.data.models.dto.BookDto
 import dev.passerby.data.models.dto.HotelDto
-import dev.passerby.data.models.dto.RoomDto
+import dev.passerby.data.models.dto.RoomListDto
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -15,5 +15,5 @@ interface ApiService {
     suspend fun loadHotelInfo(): Response<HotelDto>
 
     @GET("8b532701-709e-4194-a41c-1a903af00195/")
-    suspend fun loadRoomsInfo(): Response<List<RoomDto>>
+    suspend fun loadRoomsInfo(): Response<RoomListDto>
 }

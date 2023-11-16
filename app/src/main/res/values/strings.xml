@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">EMTestProject</string>
     <string name="desc_placeholder">Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!</string>
-    <string name="hotel_price_placeholder">от %s ₽</string>
+    <string name="price_placeholder">от %s ₽</string>
     <string name="hotel_title">Отель</string>
     <string name="about_hotel_title">Об отеле</string>
     <string name="facilities_title">Удобства</string>
@@ -9,4 +9,6 @@
     <string name="included_title">Что включено</string>
     <string name="exclude_title">Что не включено</string>
     <string name="select_room_button_text">К выбору номера</string>
+    <string name="about_room_text">Подробнее о номере</string>
+    <string name="rooms_select_button_text">Выбрать номер</string>
 </resources>
