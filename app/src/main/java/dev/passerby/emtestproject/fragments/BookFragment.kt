@@ -1,14 +1,19 @@
 package dev.passerby.emtestproject.fragments
 
 import android.os.Bundle
+import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import dev.passerby.emtestproject.R
 import dev.passerby.emtestproject.customviews.TouristInfoItemView
 import dev.passerby.emtestproject.databinding.FragmentBookBinding
+import dev.passerby.emtestproject.hideErrorInTextField
+import dev.passerby.emtestproject.showErrorInTextField
 import dev.passerby.emtestproject.viewmodels.BookViewModel
 
 class BookFragment : Fragment() {
@@ -22,6 +27,8 @@ class BookFragment : Fragment() {
     }
 
     private var touristNumber = 1
+    private var phoneNumber = ""
+    private var email = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,18 +40,85 @@ class BookFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.bookPhoneEditText.setOnFocusChangeListener { _, isFocused ->
-            if (isFocused) {
-                binding.bookPhoneEditText.hint = "+7 (***) ***-**-**"
-            } else {
-                binding.bookPhoneEditText.hint = ""
-            }
-        }
+        initViews()
         observeViewModel()
+
         binding.bookAddTouristContainer.setOnClickListener {
             val touristView = TouristInfoItemView(requireContext(), null)
             touristView.setTouristTitle(touristNumber++)
             binding.bookTouristsContainer.addView(touristView)
+        }
+    }
+
+    private fun initViews() {
+        with(binding) {
+
+            bookPhoneEditText.setOnFocusChangeListener { _, isFocused ->
+                phoneNumber = bookPhoneEditText.unMaskedText?.trim().toString()
+
+                if (isFocused) {
+                    bookPhoneEditText.hint = "+7 (***) ***-**-**"
+                } else {
+                    bookPhoneEditText.hint = ""
+
+                    if (phoneNumber.isEmpty()) {
+                        hideErrorInTextField(bookPhoneEditText)
+                    } else {
+                        if (!checkPhoneNumberIsValid(phoneNumber)) {
+                            showErrorInTextField(
+                                bookPhoneEditText,
+                                getString(R.string.not_valid_data_error)
+                            )
+                        } else {
+                            hideErrorInTextField(bookPhoneEditText)
+                        }
+                    }
+                }
+            }
+
+            bookEmailEditText.setOnFocusChangeListener { _, isFocused ->
+                email = bookEmailEditText.text?.trim().toString()
+
+                if (!isFocused) {
+                    if (email.isEmpty()) {
+                        hideErrorInTextField(bookEmailEditText)
+                    } else {
+                        if (!checkEmailIsValid(email)) {
+                            showErrorInTextField(
+                                binding.bookEmailEditText,
+                                getString(R.string.not_valid_data_error)
+                            )
+                        } else {
+                            hideErrorInTextField(bookEmailEditText)
+                        }
+                    }
+                }
+            }
+
+            bookPayButton.setOnClickListener {
+                if (!checkPhoneNumberIsValid(phoneNumber)) {
+                    showErrorInTextField(
+                        bookPhoneEditText,
+                        getString(R.string.not_valid_data_error)
+                    )
+                    return@setOnClickListener
+                }
+                if (!checkEmailIsValid(email)) {
+                    showErrorInTextField(
+                        bookEmailEditText,
+                        getString(R.string.not_valid_data_error)
+                    )
+                    return@setOnClickListener
+                }
+                bookTouristsContainer.forEach {
+                    val touristItem = it as TouristInfoItemView
+                    if (!touristItem.checkAllFieldsAreFilled()) {
+                        return@setOnClickListener
+                    }
+                }
+
+                Log.d("TAG", "initViews: Success")
+            }
         }
     }
 
@@ -81,6 +155,14 @@ class BookFragment : Fragment() {
                 bookPayButton.text = buttonPrice
             }
         }
+    }
+
+    private fun checkPhoneNumberIsValid(phoneNumber: String): Boolean {
+        return phoneNumber.length == 10
+    }
+
+    private fun checkEmailIsValid(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     override fun onDestroy() {
