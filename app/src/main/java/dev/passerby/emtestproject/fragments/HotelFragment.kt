@@ -8,23 +8,23 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.flexbox.FlexboxLayout
+import dagger.hilt.android.AndroidEntryPoint
 import dev.passerby.emtestproject.R
 import dev.passerby.emtestproject.databinding.FragmentHotelBinding
 import dev.passerby.emtestproject.viewmodels.HotelViewModel
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
+@AndroidEntryPoint
 class HotelFragment : Fragment() {
 
     private var _binding: FragmentHotelBinding? = null
     private val binding: FragmentHotelBinding
         get() = _binding ?: throw RuntimeException("FragmentHotelBinding is null")
 
-    private val viewModel by lazy {
-        ViewModelProvider(this)[HotelViewModel::class.java]
-    }
+    private val viewModel: HotelViewModel by viewModels()
 
     private var hotelName = ""
 
