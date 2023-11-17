@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="rating_text_color">#FFA800</color>
+    <color name="rating_background">#33FFC700</color>
+    <color name="location_text_color">#0D72FF</color>
+    <color name="price_add_text_color">#828796</color>
+    <color name="peculiarity_background">#FBFBFC</color>
+    <color name="additional_text_color">#828796</color>
+    <color name="main_background">#F5F5F8</color>
+    <color name="error_red">#26EB5757</color>
+    <color name="text_field_background">#F6F6F9</color>
 </resources>

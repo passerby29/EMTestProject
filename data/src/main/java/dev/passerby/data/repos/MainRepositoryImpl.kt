@@ -9,7 +9,7 @@ import dev.passerby.data.database.AppDatabase
 import dev.passerby.data.mappers.MainMapper
 import dev.passerby.data.models.dto.BookDto
 import dev.passerby.data.models.dto.HotelDto
-import dev.passerby.data.models.dto.RoomDto
+import dev.passerby.data.models.dto.RoomListDto
 import dev.passerby.data.network.ApiFactory
 import dev.passerby.data.network.BaseResponse
 import dev.passerby.domain.models.BookModel
@@ -27,7 +27,7 @@ class MainRepositoryImpl(application: Application) : MainRepository {
     private val mainMapper = MainMapper()
     private val bookResult: MutableLiveData<BaseResponse<BookDto>> = MutableLiveData()
     private val hotelResult: MutableLiveData<BaseResponse<HotelDto>> = MutableLiveData()
-    private val roomResult: MutableLiveData<BaseResponse<List<RoomDto>>> = MutableLiveData()
+    private val roomResult: MutableLiveData<BaseResponse<RoomListDto>> = MutableLiveData()
 
     override fun getBookInfo(): LiveData<BookModel> {
         val bookInfo = bookInfoDao.getBookInfo()
@@ -56,12 +56,12 @@ class MainRepositoryImpl(application: Application) : MainRepository {
                 bookResult.value = BaseResponse.Success(response.body())
                 val dbModelList = mainMapper.bookMapper.mapBookDtoToDbModel(response.body()!!)
                 bookInfoDao.insertBook(dbModelList)
-                Log.d(TAG, "loadCoins: ${response.body()}")
+                Log.d(TAG, "loadBookInfoTry: ${response.body()}")
             } else {
                 bookResult.value = BaseResponse.Error(response.message())
             }
         } catch (ex: Exception) {
-            Log.d(TAG, "loadCoins: $ex")
+            Log.d(TAG, "loadBookInfoCatch: $ex")
             bookResult.value = BaseResponse.Error(ex.message)
         }
     }
@@ -75,12 +75,12 @@ class MainRepositoryImpl(application: Application) : MainRepository {
                 val dbModelList =
                     mainMapper.hotelMapper.mapHotelDtoToDbModel(response.body()!!)
                 hotelInfoDao.insertHotel(dbModelList)
-                Log.d(TAG, "loadCoins: ${response.body()}")
+                Log.d(TAG, "loadHotelInfoTry: ${response.body()}")
             } else {
                 hotelResult.value = BaseResponse.Error(response.message())
             }
         } catch (ex: Exception) {
-            Log.d(TAG, "loadCoins: $ex")
+            Log.d(TAG, "loadHotelInfoCatch: $ex")
             hotelResult.value = BaseResponse.Error(ex.message)
         }
     }
@@ -92,14 +92,14 @@ class MainRepositoryImpl(application: Application) : MainRepository {
             if (response.code() == 200) {
                 roomResult.value = BaseResponse.Success(response.body())
                 val dbModelList =
-                    response.body()?.map { mainMapper.roomMapper.mapRoomDtoToDbModel(it) }
+                    response.body()?.rooms?.map { mainMapper.roomMapper.mapRoomDtoToDbModel(it) }
                 roomInfoDao.insertRooms(dbModelList ?: emptyList())
-                Log.d(TAG, "loadCoins: ${response.body()?.get(0)}")
+                Log.d(TAG, "loadRoomsInfoTry: ${response.body()?.rooms?.get(0)}")
             } else {
                 roomResult.value = BaseResponse.Error(response.message())
             }
         } catch (ex: Exception) {
-            Log.d(TAG, "loadCoins: $ex")
+            Log.d(TAG, "loadRoomsInfoCatch: $ex")
             roomResult.value = BaseResponse.Error(ex.message)
         }
     }
