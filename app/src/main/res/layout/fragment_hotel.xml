@@ -10,8 +10,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:scrollbars="none"
         android:overScrollMode="never"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,15 +68,38 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <org.imaginativeworld.whynotimagecarousel.ImageCarousel
-                        android:id="@+id/hotelImageCarousel"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:showBottomShadow="false"
-                        app:showCaption="false"
-                        app:showIndicator="true"
-                        app:showNavigationButtons="false"
-                        app:showTopShadow="false" />
+                        android:layout_height="match_parent">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:elevation="9dp">
+
+                            <me.relex.circleindicator.CircleIndicator2
+                                android:id="@+id/hotelCustomIndicator"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|bottom"
+                                android:layout_marginBottom="8dp"
+                                android:background="@drawable/item_custom_indicator_background"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="5dp"
+                                app:ci_drawable="@drawable/selected_dot"
+                                app:ci_drawable_unselected="@drawable/unselected_dot" />
+                        </FrameLayout>
+
+                        <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                            android:id="@+id/hotelImageCarousel"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:showBottomShadow="false"
+                            app:showCaption="false"
+                            app:showIndicator="false"
+                            app:showNavigationButtons="false"
+                            app:showTopShadow="false" />
+                    </FrameLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.textview.MaterialTextView
@@ -87,7 +110,6 @@
                     android:background="@drawable/item_rating_background"
                     android:drawableStart="@drawable/ic_star"
                     android:drawablePadding="2dp"
-                    tools:ignore="TextContrastCheck"
                     android:drawableTint="@color/rating_text_color"
                     android:fontFamily="@font/sf_medium"
                     android:paddingHorizontal="10dp"
@@ -96,6 +118,7 @@
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/hotelImageContainer"
+                    tools:ignore="TextContrastCheck"
                     tools:text="5 Превосходно" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -117,10 +140,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    tools:ignore="TextContrastCheck"
                     android:textColor="@color/location_text_color"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/hotelNameTextView"
+                    tools:ignore="TextContrastCheck"
                     tools:text="Madinat Makadi, Safaga Road, Makadi Bay, Египет" />
 
 
@@ -185,7 +208,7 @@
                     app:justifyContent="flex_start"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/hotelAboutTitleTextView"/>
+                    app:layout_constraintTop_toBottomOf="@id/hotelAboutTitleTextView" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/hotelDescTextView"
@@ -220,9 +243,9 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginEnd="12dp"
+                            android:contentDescription="@null"
                             android:src="@drawable/ic_facilities"
-                            app:tint="@color/black"
-                            android:contentDescription="@null" />
+                            app:tint="@color/black" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -250,9 +273,9 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
+                            android:contentDescription="@null"
                             android:src="@drawable/ic_arrow_right"
-                            app:tint="@color/black"
-                            android:contentDescription="@null" />
+                            app:tint="@color/black" />
                     </LinearLayout>
 
                     <com.google.android.material.divider.MaterialDivider
@@ -273,9 +296,9 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginEnd="12dp"
+                            android:contentDescription="@null"
                             android:src="@drawable/ic_include"
-                            app:tint="@color/black"
-                            android:contentDescription="@null" />
+                            app:tint="@color/black" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -303,9 +326,9 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
+                            android:contentDescription="@null"
                             android:src="@drawable/ic_arrow_right"
-                            app:tint="@color/black"
-                            android:contentDescription="@null" />
+                            app:tint="@color/black" />
                     </LinearLayout>
 
                     <com.google.android.material.divider.MaterialDivider
@@ -326,9 +349,9 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_marginEnd="12dp"
+                            android:contentDescription="@null"
                             android:src="@drawable/ic_exclude"
-                            app:tint="@color/black"
-                            android:contentDescription="@null" />
+                            app:tint="@color/black" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -356,9 +379,9 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
+                            android:contentDescription="@null"
                             android:src="@drawable/ic_arrow_right"
-                            app:tint="@color/black"
-                            android:contentDescription="@null" />
+                            app:tint="@color/black" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
