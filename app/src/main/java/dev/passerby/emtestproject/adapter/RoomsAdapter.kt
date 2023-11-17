@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.ListAdapter
 import com.google.android.flexbox.FlexboxLayout
 import dev.passerby.domain.models.RoomModel
@@ -18,7 +19,7 @@ import dev.passerby.emtestproject.viewholders.RoomViewHolder
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
 
-class RoomsAdapter(private val context: Context) :
+class RoomsAdapter(private val context: Context, private val lifecycle: LifecycleOwner) :
     ListAdapter<RoomModel, RoomViewHolder>(RoomDiffCallback()) {
 
     var onRoomItemCLickListener: (() -> Unit)? = null
@@ -37,6 +38,10 @@ class RoomsAdapter(private val context: Context) :
         val item = getItem(position)
         val binding = holder.binding
         with(binding) {
+
+            binding.roomsImageCarousel.registerLifecycle(lifecycle)
+            binding.roomsImageCarousel.setIndicator(binding.roomsCustomIndicator)
+
             val carouselList = item.imageUrls.map { CarouselItem(it) }
             val price =
                 String.format(context.getString(R.string.price_placeholder), item.price)

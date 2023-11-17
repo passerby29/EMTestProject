@@ -45,6 +45,9 @@ class HotelFragment : Fragment() {
                 HotelFragmentDirections.actionHotelFragmentToRoomsFragment(hotelName)
             )
         }
+
+        binding.hotelImageCarousel.registerLifecycle(viewLifecycleOwner)
+        binding.hotelImageCarousel.setIndicator(binding.hotelCustomIndicator)
     }
 
     private fun observeViewModel() {
