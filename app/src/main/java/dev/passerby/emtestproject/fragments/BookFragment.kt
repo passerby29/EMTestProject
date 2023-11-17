@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import dev.passerby.emtestproject.R
 import dev.passerby.emtestproject.customviews.TouristInfoItemView
 import dev.passerby.emtestproject.databinding.FragmentBookBinding
@@ -16,15 +17,14 @@ import dev.passerby.emtestproject.hideErrorInTextField
 import dev.passerby.emtestproject.showErrorInTextField
 import dev.passerby.emtestproject.viewmodels.BookViewModel
 
+@AndroidEntryPoint
 class BookFragment : Fragment() {
 
     private var _binding: FragmentBookBinding? = null
     private val binding: FragmentBookBinding
         get() = _binding ?: throw RuntimeException("FragmentBookBinding is null")
 
-    private val viewModel by lazy {
-        ViewModelProvider(this)[BookViewModel::class.java]
-    }
+    private val viewModel: BookViewModel by viewModels()
 
     private var touristNumber = 1
     private var phoneNumber = ""

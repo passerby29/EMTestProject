@@ -5,23 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import dev.passerby.emtestproject.adapter.RoomsAdapter
 import dev.passerby.emtestproject.databinding.FragmentRoomsBinding
 import dev.passerby.emtestproject.viewmodels.RoomsViewModel
 
+@AndroidEntryPoint
 class RoomsFragment : Fragment() {
 
     private var _binding: FragmentRoomsBinding? = null
     private val binding: FragmentRoomsBinding
         get() = _binding ?: throw RuntimeException("FragmentRoomsBinding is null")
 
-    private val viewModel by lazy {
-        ViewModelProvider(this)[RoomsViewModel::class.java]
-    }
+    private val viewModel: RoomsViewModel by viewModels()
 
     private val args by navArgs<RoomsFragmentArgs>()
     private var roomsAdapter: RoomsAdapter? = null
@@ -50,7 +50,7 @@ class RoomsFragment : Fragment() {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = roomsAdapter
         }
-        viewModel.roomsInfo.observe(viewLifecycleOwner){
+        viewModel.roomsInfo.observe(viewLifecycleOwner) {
             roomsAdapter?.submitList(it)
         }
     }

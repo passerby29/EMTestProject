@@ -1,19 +1,18 @@
 package dev.passerby.emtestproject.viewmodels
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.passerby.data.repos.MainRepositoryImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.passerby.domain.usecases.GetRoomsInfoUseCase
 import dev.passerby.domain.usecases.LoadRoomsInfoUseCase
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RoomsViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val repository = MainRepositoryImpl(application)
-
-    private val getRoomsInfoUseCase = GetRoomsInfoUseCase(repository)
-    private val loadRoomsInfoUseCase = LoadRoomsInfoUseCase(repository)
+@HiltViewModel
+class RoomsViewModel @Inject constructor(
+    getRoomsInfoUseCase: GetRoomsInfoUseCase,
+    private val loadRoomsInfoUseCase: LoadRoomsInfoUseCase
+) : ViewModel() {
 
     val roomsInfo = getRoomsInfoUseCase()
 
