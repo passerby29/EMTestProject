@@ -7,9 +7,9 @@ import dev.passerby.domain.models.RoomModel
 
 interface MainRepository {
 
-    fun getHotelInfo(): LiveData<HotelModel>
+    fun getHotelInfo(): LiveData<List<HotelModel>>
     fun getRoomsInfo(): LiveData<List<RoomModel>>
-    fun getBookInfo(): LiveData<BookModel>
+    fun getBookInfo(): LiveData<List<BookModel>>
 
     suspend fun loadHotelInfo()
     suspend fun loadRoomsInfo()

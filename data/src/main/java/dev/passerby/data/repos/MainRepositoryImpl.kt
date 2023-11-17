@@ -10,33 +10,42 @@ import dev.passerby.data.mappers.MainMapper
 import dev.passerby.data.models.dto.BookDto
 import dev.passerby.data.models.dto.HotelDto
 import dev.passerby.data.models.dto.RoomListDto
-import dev.passerby.data.network.ApiFactory
+import dev.passerby.data.network.ApiService
 import dev.passerby.data.network.BaseResponse
 import dev.passerby.domain.models.BookModel
 import dev.passerby.domain.models.HotelModel
 import dev.passerby.domain.models.RoomModel
 import dev.passerby.domain.repos.MainRepository
+import javax.inject.Inject
 
-class MainRepositoryImpl(application: Application) : MainRepository {
+class MainRepositoryImpl @Inject constructor(
+    private val apiService: ApiService,
+    application: Application
+) : MainRepository {
 
     private val db = AppDatabase.getInstance(application)
     private val bookInfoDao = db.bookInfoDao()
     private val hotelInfoDao = db.hotelInfoDao()
     private val roomInfoDao = db.roomsInfoDao()
-    private val apiService = ApiFactory.apiService
-    private val mainMapper = MainMapper()
-    private val bookResult: MutableLiveData<BaseResponse<BookDto>> = MutableLiveData()
-    private val hotelResult: MutableLiveData<BaseResponse<HotelDto>> = MutableLiveData()
-    private val roomResult: MutableLiveData<BaseResponse<RoomListDto>> = MutableLiveData()
 
-    override fun getBookInfo(): LiveData<BookModel> {
+    private val mainMapper = MainMapper()
+
+    override fun getBookInfo(): LiveData<List<BookModel>> {
         val bookInfo = bookInfoDao.getBookInfo()
-        return bookInfo.map { mainMapper.bookMapper.mapBookDbModelToEntity(it) }
+        return bookInfo.map { list ->
+            list.map {
+                mainMapper.bookMapper.mapBookDbModelToEntity(it)
+            }
+        }
     }
 
-    override fun getHotelInfo(): LiveData<HotelModel> {
+    override fun getHotelInfo(): LiveData<List<HotelModel>> {
         val hotelInfo = hotelInfoDao.getHotelInfo()
-        return hotelInfo.map { mainMapper.hotelMapper.mapHotelDbModelToEntity(it) }
+        return hotelInfo.map { list ->
+            list.map {
+                mainMapper.hotelMapper.mapHotelDbModelToEntity(it)
+            }
+        }
     }
 
     override fun getRoomsInfo(): LiveData<List<RoomModel>> {
@@ -49,6 +58,8 @@ class MainRepositoryImpl(application: Application) : MainRepository {
     }
 
     override suspend fun loadBookInfo() {
+        val bookResult: MutableLiveData<BaseResponse<BookDto>> = MutableLiveData()
+
         bookResult.value = BaseResponse.Loading()
         try {
             val response = apiService.loadBookInfo()
@@ -67,6 +78,8 @@ class MainRepositoryImpl(application: Application) : MainRepository {
     }
 
     override suspend fun loadHotelInfo() {
+        val hotelResult: MutableLiveData<BaseResponse<HotelDto>> = MutableLiveData()
+
         hotelResult.value = BaseResponse.Loading()
         try {
             val response = apiService.loadHotelInfo()
@@ -86,6 +99,8 @@ class MainRepositoryImpl(application: Application) : MainRepository {
     }
 
     override suspend fun loadRoomsInfo() {
+        val roomResult: MutableLiveData<BaseResponse<RoomListDto>> = MutableLiveData()
+
         roomResult.value = BaseResponse.Loading()
         try {
             val response = apiService.loadRoomsInfo()
