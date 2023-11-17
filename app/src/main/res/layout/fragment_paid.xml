@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.PaidFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/paidTopBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/paidToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            app:navigationIcon="@drawable/ic_arrow_left">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/paidTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sf_medium"
+                android:gravity="center"
+                android:text="@string/paid_title"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paidTopBarLayout">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/paid_image_background"
+            android:src="@drawable/im_party"
+            app:contentPadding="25dp" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/sf_medium"
+            android:text="@string/order_in_work_text"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/paidOrderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="7dp"
+            android:layout_marginTop="20dp"
+            android:breakStrategy="high_quality"
+            android:fontFamily="@font/sf_regular"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/additional_text_color"
+            android:textSize="16sp"
+            tools:text="@string/paid_order_placeholder" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/paidFinishButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="12dp"
+            android:backgroundTint="#0D72FF"
+            android:fontFamily="@font/sf_medium"
+            android:text="@string/paid_button_text"
+            android:textSize="16sp"
+            app:cornerRadius="15dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package dev.passerby.emtestproject.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import dev.passerby.emtestproject.R
 import dev.passerby.emtestproject.customviews.TouristInfoItemView
 import dev.passerby.emtestproject.databinding.FragmentBookBinding
@@ -47,6 +47,10 @@ class BookFragment : Fragment() {
             val touristView = TouristInfoItemView(requireContext(), null)
             touristView.setTouristTitle(touristNumber++)
             binding.bookTouristsContainer.addView(touristView)
+        }
+
+        binding.bookToolbar.setNavigationOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
@@ -117,7 +121,9 @@ class BookFragment : Fragment() {
                     }
                 }
 
-                Log.d("TAG", "initViews: Success")
+                findNavController().navigate(
+                    BookFragmentDirections.actionBookFragmentToPaidFragment()
+                )
             }
         }
     }

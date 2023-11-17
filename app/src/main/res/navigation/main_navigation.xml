@@ -29,5 +29,18 @@
         android:id="@+id/bookFragment"
         android:name="dev.passerby.emtestproject.fragments.BookFragment"
         android:label="fragment_book"
-        tools:layout="@layout/fragment_book" />
+        tools:layout="@layout/fragment_book" >
+        <action
+            android:id="@+id/action_bookFragment_to_paidFragment"
+            app:destination="@id/paidFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paidFragment"
+        android:name="dev.passerby.emtestproject.fragments.PaidFragment"
+        android:label="fragment_paid"
+        tools:layout="@layout/fragment_paid" >
+        <action
+            android:id="@+id/action_paidFragment_to_hotelFragment"
+            app:destination="@id/hotelFragment" />
+    </fragment>
 </navigation>
