@@ -85,8 +85,7 @@ class MainRepositoryImpl @Inject constructor(
             val response = apiService.loadHotelInfo()
             if (response.code() == 200) {
                 hotelResult.value = BaseResponse.Success(response.body())
-                val dbModelList =
-                    mainMapper.hotelMapper.mapHotelDtoToDbModel(response.body()!!)
+                val dbModelList = mainMapper.hotelMapper.mapHotelDtoToDbModel(response.body()!!)
                 hotelInfoDao.insertHotel(dbModelList)
                 Log.d(TAG, "loadHotelInfoTry: ${response.body()}")
             } else {

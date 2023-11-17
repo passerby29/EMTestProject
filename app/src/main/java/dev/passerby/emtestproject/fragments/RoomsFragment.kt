@@ -36,7 +36,7 @@ class RoomsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        roomsAdapter = RoomsAdapter(requireContext())
+        roomsAdapter = RoomsAdapter(requireContext(), viewLifecycleOwner)
         roomsAdapter?.onRoomItemCLickListener = {
             findNavController().navigate(RoomsFragmentDirections.actionRoomsFragmentToBookFragment())
         }
