@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/item_center_layout_background"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="13dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bookItemTouristTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/sf_medium"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            tools:text="@string/tourist_info_title_placeholder" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/bookItemShowHideButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/item_info_tourist_item_button_background"
+            android:src="@drawable/ic_arrow_up"
+            android:tint="@color/location_text_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bookItemEditTextContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/name_hint"
+            app:boxBackgroundColor="@color/text_field_background"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="#A9ABB7">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bookItemNameEditText"
+                style="@style/textInputLayoutShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_regular"
+                android:inputType="textPersonName"
+                android:textColor="#14142B"
+                android:textSize="16sp"
+                tools:text="Иван" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/surname_hint"
+            app:boxBackgroundColor="@color/text_field_background"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="#A9ABB7">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bookItemSurnameEditText"
+                style="@style/textInputLayoutShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_regular"
+                android:inputType="textPersonName"
+                android:textColor="#14142B"
+                android:textSize="16sp"
+                tools:text="Иванов" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/brith_date_hint"
+            app:boxBackgroundColor="@color/text_field_background"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="#A9ABB7">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/bookItemBirthDateEditText"
+                style="@style/textInputLayoutShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_regular"
+                android:inputType="date"
+                app:mask="**.**.****"
+                android:textColor="#14142B"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/citizenship_hint"
+            app:boxBackgroundColor="@color/text_field_background"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="#A9ABB7">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bookItemCitizenshipEditText"
+                style="@style/textInputLayoutShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_regular"
+                android:inputType="textPersonName"
+                android:textColor="#14142B"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/passport_id_hint"
+            app:boxBackgroundColor="@color/text_field_background"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="#A9ABB7">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bookItemPassportIdEditText"
+                style="@style/textInputLayoutShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_regular"
+                android:inputType="number"
+                android:textColor="#14142B"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/passport_end_date_hint"
+            app:boxBackgroundColor="@color/text_field_background"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintTextColor="#A9ABB7">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/bookItemPassportEndDateEditText"
+                style="@style/textInputLayoutShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_regular"
+                android:inputType="date"
+                app:mask="**.**.****"
+                android:textColor="#14142B"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+</LinearLayout>

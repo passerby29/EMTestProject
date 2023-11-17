@@ -63,7 +63,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
     //maskedEditText
-//    implementation("ru.egslava:MaskedEditText:1.0.5")
+    implementation("io.github.vicmikhailau:MaskedEditText:5.0.1")
     // flexBox
     implementation("com.google.android.flexbox:flexbox:3.0.0")
     //imageCarousel
