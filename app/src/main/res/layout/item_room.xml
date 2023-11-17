@@ -127,11 +127,12 @@
                 android:textSize="30sp"
                 tools:text="@string/price_placeholder" />
 
-            <com.google.android.material.textview.MaterialTextView
+            <TextView
                 android:id="@+id/roomsPriceAddTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_regular"
+                android:layout_gravity="bottom"
                 android:textColor="@color/price_add_text_color"
                 android:textSize="16sp"
                 tools:ignore="TextContrastCheck"
