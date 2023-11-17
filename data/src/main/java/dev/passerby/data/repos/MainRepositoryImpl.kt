@@ -29,14 +29,22 @@ class MainRepositoryImpl(application: Application) : MainRepository {
     private val hotelResult: MutableLiveData<BaseResponse<HotelDto>> = MutableLiveData()
     private val roomResult: MutableLiveData<BaseResponse<RoomListDto>> = MutableLiveData()
 
-    override fun getBookInfo(): LiveData<BookModel> {
+    override fun getBookInfo(): LiveData<List<BookModel>> {
         val bookInfo = bookInfoDao.getBookInfo()
-        return bookInfo.map { mainMapper.bookMapper.mapBookDbModelToEntity(it) }
+        return bookInfo.map { list ->
+            list.map {
+                mainMapper.bookMapper.mapBookDbModelToEntity(it)
+            }
+        }
     }
 
-    override fun getHotelInfo(): LiveData<HotelModel> {
+    override fun getHotelInfo(): LiveData<List<HotelModel>> {
         val hotelInfo = hotelInfoDao.getHotelInfo()
-        return hotelInfo.map { mainMapper.hotelMapper.mapHotelDbModelToEntity(it) }
+        return hotelInfo.map { list ->
+            list.map {
+                mainMapper.hotelMapper.mapHotelDbModelToEntity(it)
+            }
+        }
     }
 
     override fun getRoomsInfo(): LiveData<List<RoomModel>> {
@@ -72,8 +80,7 @@ class MainRepositoryImpl(application: Application) : MainRepository {
             val response = apiService.loadHotelInfo()
             if (response.code() == 200) {
                 hotelResult.value = BaseResponse.Success(response.body())
-                val dbModelList =
-                    mainMapper.hotelMapper.mapHotelDtoToDbModel(response.body()!!)
+                val dbModelList = mainMapper.hotelMapper.mapHotelDtoToDbModel(response.body()!!)
                 hotelInfoDao.insertHotel(dbModelList)
                 Log.d(TAG, "loadHotelInfoTry: ${response.body()}")
             } else {

@@ -129,36 +129,42 @@ class BookFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.bookInfo.observe(viewLifecycleOwner) {
-            with(binding) {
-                val rank = "${it.hoRating} ${it.ratingName}"
-                val dates = "${it.tourDateStart} - ${it.tourDateStop}"
-                val priceSum = it.tourPrice + it.fuelCharge + it.serviceCharge
+        viewModel.bookInfo.observe(viewLifecycleOwner) { bookList ->
+            if (bookList.isNotEmpty()) {
+                val bookInfo = bookList[0]
+                with(binding) {
+                    val rank = "${bookInfo.hoRating} ${bookInfo.ratingName}"
+                    val dates = "${bookInfo.tourDateStart} - ${bookInfo.tourDateStop}"
+                    val priceSum = bookInfo.tourPrice + bookInfo.fuelCharge + bookInfo.serviceCharge
 
-                val nights =
-                    String.format(getString(R.string.nights_placeholder), it.numberOfNights)
-                val tourPrice = String.format(getString(R.string.price_placeholder), it.tourPrice)
-                val fuelCharge = String.format(getString(R.string.price_placeholder), it.fuelCharge)
-                val serviceCharge =
-                    String.format(getString(R.string.price_placeholder), it.serviceCharge)
-                val price = String.format(getString(R.string.price_placeholder), priceSum)
-                val buttonPrice = String.format(getString(R.string.pay_text_placeholder), priceSum)
+                    val nights =
+                        String.format(getString(R.string.nights_placeholder), bookInfo.numberOfNights)
+                    val tourPrice =
+                        String.format(getString(R.string.price_placeholder), bookInfo.tourPrice)
+                    val fuelCharge =
+                        String.format(getString(R.string.price_placeholder), bookInfo.fuelCharge)
+                    val serviceCharge =
+                        String.format(getString(R.string.price_placeholder), bookInfo.serviceCharge)
+                    val price = String.format(getString(R.string.price_placeholder), priceSum)
+                    val buttonPrice =
+                        String.format(getString(R.string.pay_text_placeholder), priceSum)
 
-                bookHotelRankTextView.text = rank
-                bookHotelNameTextView.text = it.hotelMame
-                bookHotelLocationTextView.text = it.hotelAddress
-                bookInfoDepartureTextView.text = it.departure
-                bookInfoArrivalTextView.text = it.arrivalCountry
-                bookInfoDatesTextView.text = dates
-                bookInfoNightNumberTextView.text = nights
-                bookInfoHotelNameTextView.text = it.hotelMame
-                bookInfoRoomTextView.text = it.room
-                bookInfoFoodTextView.text = it.nutrition
-                bookTourPriceTextView.text = tourPrice
-                bookFuelChargeTextView.text = fuelCharge
-                bookServiceChargeTextView.text = serviceCharge
-                bookFullPriceTextView.text = price
-                bookPayButton.text = buttonPrice
+                    bookHotelRankTextView.text = rank
+                    bookHotelNameTextView.text = bookInfo.hotelMame
+                    bookHotelLocationTextView.text = bookInfo.hotelAddress
+                    bookInfoDepartureTextView.text = bookInfo.departure
+                    bookInfoArrivalTextView.text = bookInfo.arrivalCountry
+                    bookInfoDatesTextView.text = dates
+                    bookInfoNightNumberTextView.text = nights
+                    bookInfoHotelNameTextView.text = bookInfo.hotelMame
+                    bookInfoRoomTextView.text = bookInfo.room
+                    bookInfoFoodTextView.text = bookInfo.nutrition
+                    bookTourPriceTextView.text = tourPrice
+                    bookFuelChargeTextView.text = fuelCharge
+                    bookServiceChargeTextView.text = serviceCharge
+                    bookFullPriceTextView.text = price
+                    bookPayButton.text = buttonPrice
+                }
             }
         }
     }

@@ -11,7 +11,7 @@ import dev.passerby.data.models.db.BookDbModel
 interface BookInfoDao {
 
     @Query("select * from book")
-    fun getBookInfo(): LiveData<BookDbModel>
+    fun getBookInfo(): LiveData<List<BookDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBook(bookInfo: BookDbModel)

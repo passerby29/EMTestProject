@@ -51,21 +51,23 @@ class HotelFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.hotelInfo.observe(viewLifecycleOwner) {
+        viewModel.hotelInfo.observe(viewLifecycleOwner) {hotelList->
+            if (hotelList.isNotEmpty()){
+            val hotel = hotelList.first()
             with(binding) {
-                val carouselList = it.imageUrls.map { CarouselItem(it) }
-                val rank = "${it.rating} ${it.ratingName}"
+                val carouselList = hotel.imageUrls.map { CarouselItem(it) }
+                val rank = "${hotel.rating} ${hotel.ratingName}"
                 val price =
-                    String.format(getString(R.string.price_placeholder), it.minimalPrice)
-                hotelName = it.name
+                    String.format(getString(R.string.price_placeholder), hotel.minimalPrice)
+                hotelName = hotel.name
                 hotelImageCarousel.setData(carouselList)
                 hotelRankTextView.text = rank
                 hotelNameTextView.text = hotelName
-                hotelLocationTextView.text = it.address
+                hotelLocationTextView.text = hotel.address
                 hotelPriceTextView.text = price
-                hotelPriceAddTextView.text = it.priceForIt
+                hotelPriceAddTextView.text = hotel.priceForIt
                 hotelPeculiaritiesContainer.removeAllViews()
-                it.aboutTheHotel.peculiarities.forEach { peculiarity ->
+                hotel.aboutTheHotel.peculiarities.forEach { peculiarity ->
                     val textView = TextView(context)
                     val params = FlexboxLayout.LayoutParams(
                         FlexboxLayout.LayoutParams.WRAP_CONTENT,
@@ -84,9 +86,9 @@ class HotelFragment : Fragment() {
                     }
                     hotelPeculiaritiesContainer.addView(textView)
                 }
-                hotelDescTextView.text = it.aboutTheHotel.description
+                hotelDescTextView.text = hotel.aboutTheHotel.description
             }
-        }
+        }}
     }
 
     override fun onDestroy() {

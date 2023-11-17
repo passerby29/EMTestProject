@@ -11,7 +11,7 @@ import dev.passerby.data.models.db.HotelDbModel
 interface HotelInfoDao {
 
     @Query("select * from hotel")
-    fun getHotelInfo(): LiveData<HotelDbModel>
+    fun getHotelInfo(): LiveData<List<HotelDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertHotel(hotelInfo: HotelDbModel)
